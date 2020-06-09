@@ -1,0 +1,142 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is an amazing website">
+    <title>HHS Grade 11</title>
+</head>
+
+<body style="background-color:darkgreen;">
+    <h1 style="text-align:center;color:white">Welcome to Herricks Healthy Schedule!</h1>
+    <hr>
+    <p id="schedule" style="background-color:white;color:black;font-size:200%"></p>
+    <p style="font-size:200%;background-color:white;color:black">Welcome to Herricks Healthy Schedule! This website aims to help you with your Junior year schedule. Choose classes you want to take for each subject, and we will give you feedback. Remember to choose a healthy variety of classes!</p>
+    <br>
+
+    <img src="https://mediaproxy.salon.com/width/1200/height/1200/https://media.salon.com/2015/08/globe_books.jpg" height="300">
+
+    <h2 style="color:white">Choose a History Class</h2>
+
+    <label style="color:white;font-size:120%" for="history">American History</label>
+    <input style="font-size:120%" type="radio" id="history" name="history"><br>
+
+    <label style="color:white;font-size:120%" for="aphistory">AP American History</label>
+    <input style="font-size:120%" type="radio" id="aphistory" name="history"><br>
+
+    <br>
+
+    <img src="https://www.yu.edu/sites/default/files/ThinkstockPhotos-658148844.jpg" height="300">
+
+    <h2 style="color:white">Choose a Chemistry Class</h2>
+
+    <label style="color:white;font-size:120%" for="chem">Chemistry</label>
+    <input style="font-size:120%" type="radio" id="chem" name="chem"><br>
+
+    <label style="color:white;font-size:120%" for="apchem">AP Chemistry</label>
+    <input style="font-size:120%" type="radio" id="apchem" name="chem"><br>
+
+    <br>
+
+    <img src="https://www.snopes.com/tachyon/2016/07/math.jpg?resize=865,452" height="300">
+
+    <h2 style="color:white">Choose a Math Class</h2>
+
+    <label style="color:white;font-size:120%" for="algebra">Algebra 2</label>
+    <input style="font-size:120%" type="radio" id="algebra" name="math"><br>
+
+    <label style="color:white;font-size:120%" for="apstat">AP Statistics</label>
+    <input style="font-size:120%" type="radio" id="apstat" name="math"><br>
+
+    <br>
+
+    <img src="https://blog.prepscholar.com/hs-fs/hubfs/main_books.jpg?width=400&name=main_books.jpg" height="300">
+
+    <h2 style="color:white">Choose an English Class</h2>
+
+    <label style="color:white;font-size:120%" for="eng11">English 11</label>
+    <input style="font-size:120%" type="radio" id="eng11" name="english"><br>
+
+    <label style="color:white;font-size:120%" for="aplang">AP Language and Composition</label>
+    <input style="font-size:120%" type="radio" id="aplang" name="english"><br>
+
+    <br>
+
+    <img src="https://img.freepik.com/free-vector/colorful-musical-notes_51486-581.jpg?size=626&ext=jpg" height="300">
+
+    <h2 style="color:white">Choose a Music Class</h2>
+
+    <label style="color:white;font-size:120%" for="orc">Orchestra / Band / Chorus</label>
+    <input style="font-size:120%" type="radio" id="orc" name="music"><br>
+
+    <label style="color:white;font-size:120%" for="apmusictheory">AP Music Theory</label>
+    <input style="font-size:120%" type="radio" id="apmusictheory" name="music"><br>
+
+    <br>
+
+    <img src="https://3.files.edl.io/74ed/18/10/24/140236-a310d26e-4f77-4af9-bc9f-8bd215c3ce80.jpg" height="300">
+
+    <h2 style="color:white">Lunch</h2>
+
+    <label style="color:white;font-size:120%" for="lunch">Lunch</label>
+    <input style="font-size:120%" type="radio" id="lunch" name="lunch"><br>
+
+    <label style="color:white;font-size:120%" for="lunch2">Trust me, take Lunch</label>
+    <input style="font-size:120%" type="radio" id="lunch2" name="lunch"><br>
+
+    <br>
+
+    <img src="https://www.minhajcollege.ac.uk/wp-content/uploads/2017/10/ALevel-Biology-1170x560.jpg" height="300">
+
+    <h2 style="color:white">Choose a Life Science Class</h2>
+
+    <label style="color:white;font-size:120%" for="health">Health</label>
+    <input style="font-size:120%" type="radio" id="health" name="life"><br>
+
+    <label style="color:white;font-size:120%" for="apbio">AP Biology</label>
+    <input style="font-size:120%" type="radio" id="apbio" name="life"><br>
+
+    <br>
+
+    <a href="#top"><button onclick=checkWin() style="font-size:120%">Submit</button></a>
+
+    <script>
+        function checkWin() {
+            if (checkAllSubject() < 2) {
+                document.getElementById("schedule").innerHTML = "You took too few AP classes. You can only improve yourself by challenging yourself. Not challenging yourself means you cannot grow. Find a balance in your schedule."
+            }
+            else if (checkAllSubject() > 3) {
+                document.getElementById("schedule").innerHTML = "You took too many AP classes. The workload is not healthy, there must be a balance between your classes. "
+            }
+            else {
+                document.getElementById("schedule").innerHTML = "The schedule you created passes the Herricks Schedule Advisor. It is well balanced in not overloading yourself, but also challenging at the same time!"
+            }
+        }
+
+        function checkAllSubject() {
+            var sum = 0;
+            var subject = ["history", "chem", "math", "english", "music", "life"];
+            for (i=0; i<subject.length; i++) {
+                sum += radioCheck(subject[i]);
+            }
+
+            console.log("Total AP: " + sum);
+            return sum;
+        }
+
+        function radioCheck(subject) {
+            var ele = document.getElementsByName(subject);
+            if (ele[0].checked) {
+                return 0;
+            }
+            else if (ele[1].checked) {
+                return 1;
+            }
+
+            else {
+                return 0;
+            }
+        }
+    </script>
+
+</body>
+</html>
